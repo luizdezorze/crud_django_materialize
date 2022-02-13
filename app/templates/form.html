@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+<div class="center-align">
+    <h2 >Cadastro de Pacientes</h2>
+</div>
+
+<div class="center-align">
+    <a href="/" class="btn waves-effect waves-light"> Voltar</a>
+</div>
+
+
+<div class="container">
+    <form action="/create/" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s6">
+          {{form.paciente}}
+          <label>Paciente</label>
+        </div>
+        <div class="input-field col s6">
+          {{form.am}}
+          <label>AM</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          {{form.duracao}}
+          <label>Duração</label>
+        </div>
+      </div>
+
+      <button class="btn waves-effect waves-light" type="submit" name="action">SALVAR</button>
+
+    </form>
+  </div>
+</body>
+</html>

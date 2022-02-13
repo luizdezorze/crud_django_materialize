@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+
+<div class="center-align">
+    <h2 >Tratamentos</h2>
+</div>
+
+<div class="center-align">
+    <a href="form/" class="btn waves-effect waves-light">Cadastrar</a>
+</div>
+
+
+ <table>
+    <thead>
+      <tr>
+          <th>#</th>
+          <th>PACIENTES</th>
+          <th>AMs</th>
+          <th>DURAÇÃO</th>
+          <th>AÇÕES</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for dbs in db %}
+      <tr>
+        <th scope="row">{{dbs.id}}</th>
+        <td>{{dbs.paciente}}</td>
+        <td>{{dbs.am}}</td>
+        <td>{{dbs.duracao}}</td>
+          <td>
+              <div class="fixed-action-btn" style="position: relative">
+                  <a class="btn-floating btn-large red">
+                    <i class="large material-icons">menu</i>
+                  </a>
+                  <ul style="position: absolute">
+                    <li><a href="/delet/{{dbs.id}}" class="btn-floating green"><i class="material-icons">delete</i></a></li>
+                    <li><a href="/view/{{dbs.id}}" class="btn-floating red"><i class="material-icons">search</i></a></li>
+                    <li><a href="/edit/{{dbs.id}}" class="btn-floating yellow darken-1"><i class="material-icons">edit</i></a></li>
+                  </ul>
+                  {% load static %}
+                  <script src="{% static 'javascript.js' %}"></script>
+              </div>
+
+<!--              <a href="">Visualizar</a>-->
+<!--              <a href="">Editar</a>-->
+<!--              <a href="">Deletar</a>-->
+          </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+ </table>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'right',
+      hoverEnabled: false
+    });
+  });
+</script>
+</body>
+</html>
